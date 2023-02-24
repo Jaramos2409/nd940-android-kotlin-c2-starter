@@ -1,9 +1,8 @@
-# Purpose of this Folder
+# Where to place NASA API Key
 
-This folder should contain the scaffolded project files to get a student started on their project. This repo will be added to the Classroom for students to use, so please do not have any solutions in this folder.
+There is a file named "apikey.properties" in the root of the project. Within that file you will see the following:
 
-## Note: Android Kotlin Gradle Update
-Use the updated Gradle version in the `~/gradle/wrapper/gradle-wrapper.properties` file:
-```
-distributionUrl = https\://services.gradle.org/distributions/gradle-6.1.1-all.zip
-```
+NASA_API_KEY=
+
+Assign the API key to "NASA_API_KEY" in "apikey.properties". The API key must be in double quotes as if it were a string in order for it to work as intended.
+

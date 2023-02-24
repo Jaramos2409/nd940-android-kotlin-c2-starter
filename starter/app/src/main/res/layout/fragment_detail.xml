@@ -7,7 +7,7 @@
 
         <variable
             name="asteroid"
-            type="com.udacity.asteroidradar.Asteroid" />
+            type="com.udacity.asteroidradar.model.Asteroid" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,6 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
+            app:statusImageContentDescription="@{asteroid.potentiallyHazardous}"
             app:asteroidStatusImage="@{asteroid.potentiallyHazardous}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -94,6 +95,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="16dp"
+                        android:contentDescription="@string/help_button_that_if_clicked_gives_more_information_about_the_unit_of_measure_being_used"
                         app:srcCompat="@drawable/ic_help_circle" />
 
                 </LinearLayout>

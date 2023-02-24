@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="property"
+            type="com.udacity.asteroidradar.model.Asteroid" />
+
+        <variable
+            name="clickListener"
+            type="com.udacity.asteroidradar.adapter.MainAsteroidListAdapter" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/asteroid_list_margin"
+        android:layout_marginBottom="@dimen/asteroid_list_margin"
+        tools:background="@color/app_background">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/left_well"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="8dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/right_well"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="8dp" />
+
+        <TextView
+            android:id="@+id/asteroid_id_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="@{property.codename}"
+            android:textAppearance="?attr/textAppearanceSubtitle1"
+            android:textColor="@color/default_text_color"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/left_well"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Asteroid ID" />
+
+        <TextView
+            android:id="@+id/asteroid_date_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:maxLines="2"
+            android:text="@{property.closeApproachDate}"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textColor="@color/default_text_color"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/left_well"
+            app:layout_constraintTop_toBottomOf="@+id/asteroid_id_text"
+            tools:text="2022-02-08" />
+
+        <ImageView
+            android:id="@+id/is_potentially_hazardous_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/icon_that_illustrates_the_status_of_an_asteroid"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/right_well"
+            app:layout_constraintTop_toTopOf="parent"
+            app:statusIcon="@{property.isPotentiallyHazardous}"
+            tools:srcCompat="@drawable/ic_status_potentially_hazardous" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>
