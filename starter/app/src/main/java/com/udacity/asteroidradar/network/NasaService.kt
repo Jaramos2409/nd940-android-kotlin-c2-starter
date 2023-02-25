@@ -5,6 +5,7 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import com.udacity.asteroidradar.BuildConfig
 import com.udacity.asteroidradar.Constants.BASE_URL
+import com.udacity.asteroidradar.getDateOfTodayStringFormatted
 import kotlinx.coroutines.Deferred
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -20,6 +21,7 @@ interface NasaService {
 
     @GET("neo/rest/v1/feed")
     fun getAsteroidsDataAsync(
+        @Query("start_date") startDate: String = getDateOfTodayStringFormatted(),
         @Query("end_date") endDate: String,
         @Query("api_key") apiKey: String = BuildConfig.NASA_API_KEY
     ): Deferred<NetworkNearEarthObjectsContainer>

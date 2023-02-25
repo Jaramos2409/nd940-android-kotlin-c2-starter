@@ -17,6 +17,15 @@ fun bindRecyclerView(recyclerView: RecyclerView, data: List<Asteroid>?) {
     }
 }
 
+@BindingAdapter("statusIconContentDescription")
+fun bindAsteroidStatusIconContentDescription(imageView: ImageView, isHazardous: Boolean) {
+    if (isHazardous) {
+        imageView.contentDescription = "Icon that labels this asteroid as potentially hazardous."
+    } else {
+        imageView.contentDescription = "Icon that labels this asteroid as not hazardous."
+    }
+}
+
 @BindingAdapter("statusIcon")
 fun bindAsteroidStatusImage(imageView: ImageView, isHazardous: Boolean) {
     if (isHazardous) {

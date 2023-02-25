@@ -74,6 +74,7 @@
             app:layout_constraintEnd_toEndOf="@+id/right_well"
             app:layout_constraintTop_toTopOf="parent"
             app:statusIcon="@{property.isPotentiallyHazardous}"
+            app:statusIconContentDescription="@{property.isPotentiallyHazardous}"
             tools:srcCompat="@drawable/ic_status_potentially_hazardous" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

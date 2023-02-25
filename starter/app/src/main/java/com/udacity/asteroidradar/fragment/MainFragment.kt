@@ -1,13 +1,15 @@
 package com.udacity.asteroidradar.fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.udacity.asteroidradar.R
 import com.udacity.asteroidradar.adapter.MainAsteroidListAdapter
 import com.udacity.asteroidradar.databinding.FragmentMainBinding
 import com.udacity.asteroidradar.viewmodels.MainFragmentViewModel
@@ -55,6 +57,32 @@ class MainFragment : Fragment() {
                 }
             }
         }
+
+        val menuHost: MenuHost = requireActivity()
+        menuHost.addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.main_overflow_menu, menu)
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                // Handle the menu selection
+                return when (menuItem.itemId) {
+                    R.id.view_weekly_asteroids -> {
+                        viewModel.setAsteroidFilterToWeekly()
+                        true
+                    }
+                    R.id.view_today_asteroids -> {
+                        viewModel.setAsteroidFilterToToday()
+                        true
+                    }
+                    R.id.view_saved_asteroids -> {
+                        viewModel.setAsteroidFilterToSaved()
+                        true
+                    }
+                    else -> false
+                }
+            }
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
         return binding.root
     }
